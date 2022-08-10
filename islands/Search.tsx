@@ -8,9 +8,27 @@ import type { PackageElement } from "../aqua.ts";
 import * as packageElement from "../utils/package_element.ts";
 import packages from "../static/registry.json" assert { type: "json" };
 
+function selector(pkg: PackageElement): string {
+  const files = packageElement.getFiles(pkg)
+    .filter((f) => f.name !== "").map((f) => f.name).join(", ");
+  const aliases = (pkg.aliases ?? [])
+    .filter((a) => a.name !== "").map((a) => a.name);
+  const pkgName = packageElement.getName(pkg);
+  const item: string[] = [pkgName];
+  if (aliases.length > 0) {
+    item.push(`(${aliases.join(", ")})`);
+  }
+  if (!pkgName.endsWith(`/${files}`) || pkgName === files) {
+    item.push(`[${files}]`);
+  }
+  if (pkg.search_words && pkg.search_words.length > 0) {
+    item.push(`: ${pkg.search_words.join(", ")}`);
+  }
+  return item.join(" ");
+}
+
 const fzf = new Fzf<PackageElement[]>(packages as PackageElement[], {
-  // TODO(4513ECHO): Follow original `aqua generate` behavior
-  selector: (v) => packageElement.getName(v),
+  selector,
   match: extendedMatch,
 });
 
@@ -46,7 +64,7 @@ export default function Search() {
             <ul>
               {entries.map((entry, index) => (
                 <li key={index} class={tw`py-1`}>
-                  {packageElement.getName(entry.item)}
+                  {selector(entry.item)}
                   <span class={tw`text-sm pl-4 italic text-gray-400`}>
                     {entry.score}
                   </span>
