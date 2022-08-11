@@ -54,7 +54,6 @@ export function getFiles(pkg: PackageElement): FileElement[] {
     if (pkg.asset) {
       return [{ name: pkg.asset }];
     }
-    // TODO: getPath()
     return [{ name: path.basename(getPath(pkg)) }];
   }
   return [];

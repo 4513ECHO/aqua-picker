@@ -2,6 +2,7 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
+import { HighlightMatches } from "../components/HighlightMatches.tsx";
 import { extendedMatch, Fzf, FzfResultItem } from "https://esm.sh/fzf@0.5.1";
 import { tw } from "@twind";
 import type { PackageElement } from "../aqua.ts";
@@ -64,7 +65,10 @@ export default function Search() {
             <ul>
               {entries.map((entry, index) => (
                 <li key={index} class={tw`py-1`}>
-                  {selector(entry.item)}
+                  <HighlightMatches
+                    str={selector(entry.item)}
+                    indices={entry.positions}
+                  />
                   <span class={tw`text-sm pl-4 italic text-gray-400`}>
                     {entry.score}
                   </span>
