@@ -2,7 +2,7 @@
   "tasks": {
     "start": "deno run -A --watch=static/,routes/ dev.ts",
     "generate-registry": "deno run --allow-net scripts/generate_registry.ts > static/registry.json",
-    "generate-type": "quicktype -l typescript -s schema https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json --just-types > aqua.ts"
+    "generate-type": "quicktype -l typescript -s schema https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json --just-types --prefer-unions > aqua.ts"
   },
   "importMap": "./import_map.json",
   "fmt": {

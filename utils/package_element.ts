@@ -1,4 +1,4 @@
-import { FileElement, PackageElement, PackageType } from "../aqua.ts";
+import { FileElement, PackageElement } from "../aqua.ts";
 import * as path from "https://deno.land/std@0.150.0/path/mod.ts";
 
 export function hasRepo(
@@ -16,7 +16,7 @@ export function getName(pkg: PackageElement): string {
     return `${pkg.repo_owner}/${pkg.repo_name}`;
   }
   if (
-    pkg.type === PackageType.GoInstall && pkg.path !== undefined
+    pkg.type === "go_install" && pkg.path !== undefined
   ) {
     return pkg.path;
   }
@@ -37,7 +37,7 @@ export function getPath(pkg: PackageElement): string {
   if (pkg.path) {
     return pkg.path;
   }
-  if (pkg.type === PackageType.GoInstall && hasRepo(pkg)) {
+  if (pkg.type === "go_install" && hasRepo(pkg)) {
     return `github.com/${pkg.repo_owner}/${pkg.repo_name}`;
   }
   return "";
@@ -50,7 +50,7 @@ export function getFiles(pkg: PackageElement): FileElement[] {
   if (hasRepo(pkg)) {
     return [{ name: pkg.repo_name }];
   }
-  if (pkg.type === PackageType.GoInstall) {
+  if (pkg.type === "go_install") {
     if (pkg.asset) {
       return [{ name: pkg.asset }];
     }
