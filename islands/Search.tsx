@@ -5,9 +5,9 @@ import { IS_BROWSER } from "$fresh/runtime.ts";
 import { HighlightMatches } from "../components/HighlightMatches.tsx";
 import { extendedMatch, Fzf, FzfResultItem } from "https://esm.sh/fzf@0.5.1";
 import { tw } from "@twind";
-import type { PackageElement } from "../aqua.ts";
+import type { PackageElement } from "../types/aqua.d.ts";
 import * as packageElement from "../utils/package_element.ts";
-import packages from "../static/registry.json" assert { type: "json" };
+import packages from "../data/registry.json" assert { type: "json" };
 
 function selector(pkg: PackageElement): string {
   const files = packageElement.getFiles(pkg)
