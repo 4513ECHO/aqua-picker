@@ -65,10 +65,15 @@ export default function Search() {
             <ul>
               {entries.map((entry, index) => (
                 <li key={index} class={tw`py-1`}>
-                  <HighlightMatches
-                    str={selector(entry.item)}
-                    indices={entry.positions}
-                  />
+                  <a
+                    href={`/package/${packageElement.getName(entry.item)}`}
+                    class={tw`hover:text-underline`}
+                  >
+                    <HighlightMatches
+                      str={selector(entry.item)}
+                      indices={entry.positions}
+                    />
+                  </a>
                   <span class={tw`text-sm pl-4 italic text-gray-400`}>
                     {entry.score}
                   </span>
