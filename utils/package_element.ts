@@ -1,5 +1,5 @@
-import { FileElement, PackageElement } from "../types/aqua.d.ts";
-import * as path from "https://deno.land/std@0.150.0/path/mod.ts";
+import { FileElement, PackageElement } from "@/types/aqua.d.ts";
+import * as path from "$std/path/mod.ts";
 
 export function hasRepo(
   pkg: PackageElement,

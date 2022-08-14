@@ -1,8 +1,8 @@
 /** @jsx h */
 import { h } from "preact";
 import { tw } from "@twind";
-import Counter from "../islands/Counter.tsx";
-import Search from "../islands/Search.tsx";
+import Counter from "@/islands/Counter.tsx";
+import Search from "@/islands/Search.tsx";
 
 export default function Home() {
   return (
