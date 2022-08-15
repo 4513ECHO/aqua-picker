@@ -56,6 +56,9 @@ export default function Search() {
           onKeyUp={(event) => handleInputChange(event.currentTarget.value)}
           class={tw`py-2 px-3 w-full border-b-2 border-gray-400 outline-none focus:border-purple-500`}
           placeholder="Type to search"
+          autocomplete="off"
+          spellcheck={false}
+          autocorrect="off"
           disabled={!IS_BROWSER}
         />
       </div>
