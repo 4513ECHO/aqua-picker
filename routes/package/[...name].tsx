@@ -6,6 +6,7 @@ import { stringify } from "$std/encoding/yaml.ts";
 import type { PackageElement } from "@/types/aqua.d.ts";
 import * as packageElement from "@/utils/package_element.ts";
 import { packages } from "@/data/registry.ts";
+import { Page } from "@/components/Page.tsx";
 
 interface Data {
   pkg: PackageElement;
@@ -30,7 +31,7 @@ export default function Package(props: PageProps<Data>) {
   const { pkg } = props.data;
   const name = packageElement.getName(pkg);
   return (
-    <div class={tw`p-4 mx-auto max-w-screen-md`}>
+    <Page title={`${name} | Aqua Picker`}>
       <h1 class={tw`font-bold text-xl`}>
         <a href={`/package/${name}`} class={tw`hover:text-underline`}>{name}</a>
       </h1>
@@ -48,6 +49,6 @@ export default function Package(props: PageProps<Data>) {
           {stringify({ packages: [pkg] })}
         </pre>
       </code>
-    </div>
+    </Page>
   );
 }

@@ -3,10 +3,11 @@ import { h } from "preact";
 import { tw } from "@twind";
 import Counter from "@/islands/Counter.tsx";
 import Search from "@/islands/Search.tsx";
+import { Page } from "@/components/Page.tsx";
 
 export default function Home() {
   return (
-    <div class={tw`p-4 mx-auto max-w-screen-md`}>
+    <Page title="Aqua Picker">
       <img
         src="/logo.svg"
         height="100px"
@@ -18,6 +19,6 @@ export default function Home() {
       </p>
       <Counter start={3} />
       <Search />
-    </div>
+    </Page>
   );
 }
