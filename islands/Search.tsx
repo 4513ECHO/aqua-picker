@@ -63,33 +63,24 @@ export default function Search() {
         />
       </div>
       <div class={tw`pt-2`}>
-        {input !== ""
-          ? (
-            <ul>
-              {entries.map((entry, index) => (
-                <li key={index} class={tw`py-1`}>
-                  <a
-                    href={`/package/${packageElement.getName(entry.item)}`}
-                    class={tw`hover:text-underline`}
-                  >
-                    <HighlightMatches
-                      str={selector(entry.item)}
-                      indices={entry.positions}
-                    />
-                  </a>
-                  <span class={tw`text-sm pl-4 italic text-gray-400`}>
-                    {entry.score}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          )
-          : (
-            <div class={tw`text-gray-600 py-1`}>
-              List MRU + contextual when query or in frequency (frequent +
-              recency) when input is empty
-            </div>
-          )}
+        <ul>
+          {entries.map((entry, index) => (
+            <li key={index} class={tw`py-1`}>
+              <a
+                href={`/package/${packageElement.getName(entry.item)}`}
+                class={tw`hover:text-underline`}
+              >
+                <HighlightMatches
+                  str={selector(entry.item)}
+                  indices={entry.positions}
+                />
+              </a>
+              <span class={tw`text-sm pl-4 italic text-gray-400`}>
+                {entry.score}
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

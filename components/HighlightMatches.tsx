@@ -13,7 +13,7 @@ export function HighlightMatches(props: HighlightMatchesProps) {
   const nodes = chars.map((value, index) => {
     if (props.indices.has(index)) {
       return (
-        <span key={index} className={tw`font-semibold`}>
+        <span key={index} class={tw`font-semibold`}>
           {value}
         </span>
       );
