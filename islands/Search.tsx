@@ -7,7 +7,7 @@ import { extendedMatch, Fzf, FzfResultItem } from "fzf";
 import { tw } from "@twind";
 import type { PackageElement } from "@/types/aqua.d.ts";
 import * as packageElement from "@/utils/package_element.ts";
-import packages from "@/data/registry.json" assert { type: "json" };
+import { packages } from "@/data/registry.ts";
 
 function selector(pkg: PackageElement): string {
   const files = packageElement.getFiles(pkg)
@@ -28,7 +28,7 @@ function selector(pkg: PackageElement): string {
   return item.join(" ");
 }
 
-const fzf = new Fzf<PackageElement[]>(packages as PackageElement[], {
+const fzf = new Fzf<PackageElement[]>(packages, {
   selector,
   match: extendedMatch,
 });

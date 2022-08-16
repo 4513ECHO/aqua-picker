@@ -5,7 +5,7 @@ import { tw } from "@twind";
 import { stringify } from "$std/encoding/yaml.ts";
 import type { PackageElement } from "@/types/aqua.d.ts";
 import * as packageElement from "@/utils/package_element.ts";
-import packages from "@/data/registry.json" assert { type: "json" };
+import { packages } from "@/data/registry.ts";
 
 interface Data {
   pkg: PackageElement;
@@ -14,10 +14,9 @@ interface Data {
 export const handler: Handlers = {
   async GET(_req: Request, ctx: HandlerContext<Data>) {
     const pkg =
-      (packages as PackageElement[]).filter((i) =>
-        packageElement.getName(i) === ctx.params.name
-      )[0];
+      packages.filter((i) => packageElement.getName(i) === ctx.params.name)[0];
     if (!pkg) {
+      // TODO: wait for ctx.renderNotFound()
       return new Response(null, { status: 404 });
     }
     // TODO: if aliases are found, redirect to oroginal package

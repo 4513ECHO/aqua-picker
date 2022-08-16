@@ -1,14 +1,12 @@
 {
   "tasks": {
     "start": "deno run -A --watch=static/,routes/ dev.ts",
-    "generate-registry": "deno run --allow-net scripts/generate_registry.ts > data/registry.json",
     "generate-type": "quicktype -l typescript -s schema https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json --just-types --prefer-unions > types/aqua.d.ts"
   },
   "importMap": "./import_map.json",
   "fmt": {
     "files": {
       "exclude": [
-        "data/registry.json",
         "types/aqua.d.ts"
       ]
     }
