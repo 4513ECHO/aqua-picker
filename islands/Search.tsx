@@ -47,21 +47,19 @@ export default function Search() {
   };
 
   return (
-    <div class={tw`px-6`}>
-      <div>
-        <input
-          type="search"
-          value={input}
-          onChange={(event) => handleInputChange(event.currentTarget.value)}
-          onKeyUp={(event) => handleInputChange(event.currentTarget.value)}
-          class={tw`py-2 px-3 w-full border-b-2 border-gray-400 outline-none focus:border-purple-500`}
-          placeholder="Type to search"
-          autocomplete="off"
-          spellcheck={false}
-          autocorrect="off"
-          disabled={!IS_BROWSER}
-        />
-      </div>
+    <div class={tw`px-6 py-2`}>
+      <input
+        type="search"
+        value={input}
+        onChange={(event) => handleInputChange(event.currentTarget.value)}
+        onKeyUp={(event) => handleInputChange(event.currentTarget.value)}
+        class={tw`py-2 px-6 w-full border-1 rounded-full border-gray-400 outline-none focus:border-blue-500`}
+        placeholder="Type to search..."
+        autocomplete="off"
+        spellcheck={false}
+        autocorrect="off"
+        disabled={!IS_BROWSER}
+      />
       <div class={tw`pt-2`}>
         <ul>
           {entries.slice(0, 50).map((entry, index) => (
