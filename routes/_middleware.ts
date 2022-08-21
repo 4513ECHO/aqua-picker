@@ -9,7 +9,8 @@ export async function handler(
 
   // logging (method path+params timeTaken status)
   const { search, pathname } = new URL(req.url);
-  console.log(
+  const log = pathname.startsWith("/_frsh/") ? console.debug : console.log;
+  log(
     `${req.method} ${pathname + search} ${
       resp.headers.has("x-function-cache-hit")
         ? String.fromCodePoint(0x26a1)
