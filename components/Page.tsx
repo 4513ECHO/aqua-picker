@@ -58,7 +58,7 @@ export function Page(props: AppProps) {
           </ul>
         </nav>
         <p class={tw`mt-2`}>
-          ©︎ {new Date().getFullYear()} Hibiki, built by{" "}
+          ©︎ {new Date().getFullYear()} Hibiki, built with{" "}
           <a href="https://fresh.deno.dev" class={tw`hover:underline`}>fresh</a>
         </p>
       </footer>
