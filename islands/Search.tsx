@@ -51,9 +51,9 @@ export default function Search() {
       <input
         type="search"
         value={input}
-        onChange={(event) => handleInputChange(event.currentTarget.value)}
-        onKeyUp={(event) => handleInputChange(event.currentTarget.value)}
-        class={tw`py-2 px-6 w-full border-1 rounded-full border-gray-400 outline-none focus:border-blue-500`}
+        // deno-lint-ignore no-explicit-any
+        onInput={(event: any) => handleInputChange(event.target.value)}
+        class={tw`py-2 px-6 w-full border(1 gray-400) rounded-full outline-none focus:border-blue-500`}
         placeholder="Type to search..."
         autocomplete="off"
         spellcheck={false}
