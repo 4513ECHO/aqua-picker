@@ -1,5 +1,7 @@
 # Aqua Picker
 
+[![Made with Fresh](https://fresh.deno.dev/fresh-badge-dark.svg)](https://fresh.deno.dev)
+
 > 💧 Search [aquaproj/aqua-registry](https://github.com/aquaproj/aqua-registry)
 > interactively from web, built with deno fresh 🍋
 

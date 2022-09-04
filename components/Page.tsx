@@ -46,7 +46,7 @@ export function Page(props: AppProps) {
       </header>
       <main class={tw`p-4 max-w-screen-md mx-auto`}>{props.children}</main>
       <footer
-        class={tw`bg-gray-100 h-32 flex flex-col gap-4 justify-center text(gray-600 center) sticky top-[100vh]`}
+        class={tw`bg-gray-100 h-40 flex flex-col gap-4 justify-center items-center text(gray-600 center) sticky top-[100vh]`}
       >
         <nav>
           <ul class={tw`flex justify-center gap-8`}>
@@ -57,9 +57,19 @@ export function Page(props: AppProps) {
             ))}
           </ul>
         </nav>
-        <p class={tw`mt-2`}>
-          ©︎ {new Date().getFullYear()} Hibiki, built with{" "}
-          <a href="https://fresh.deno.dev" class={tw`hover:underline`}>fresh</a>
+        <p class={tw`mt-1`}>
+          ©︎ {new Date().getFullYear()} Hibiki
+        </p>
+        <p class={tw`h-4`}>
+          <a href="https://fresh.deno.dev">
+            <img
+              class={tw`hover:(border(1 transparent)`}
+              width="197"
+              height="37"
+              src="https://fresh.deno.dev/fresh-badge.svg"
+              alt="Made with Fresh"
+            />
+          </a>
         </p>
       </footer>
     </div>
