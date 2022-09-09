@@ -10,5 +10,9 @@
         "types/aqua.d.ts"
       ]
     }
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   }
 }

@@ -1,7 +1,4 @@
-/** @jsx h */
-import { h } from "preact";
 import type { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
-import { tw } from "@twind";
 import { stringify } from "$std/encoding/yaml.ts";
 import type { PackageElement } from "@/types/aqua.d.ts";
 import * as packageElement from "@/utils/package_element.ts";
@@ -32,19 +29,19 @@ export default function Package(props: PageProps<Data>) {
   const name = packageElement.getName(pkg);
   return (
     <Page title={`${name} | Aqua Picker`}>
-      <h1 class={tw`font-bold text-xl`}>
-        <a href={`/package/${name}`} class={tw`hover:text-underline`}>{name}</a>
+      <h1 class="font-bold text-xl">
+        <a href={`/package/${name}`} class="hover:text-underline">{name}</a>
       </h1>
       {pkg.description
-        ? <p class={tw`my-6`}>{pkg.description}</p>
-        : <p class={tw`text-gray-400 my-6`}>no description found</p>}
+        ? <p class="my-6">{pkg.description}</p>
+        : <p class="text-gray-400 my-6">no description found</p>}
       <a
         href={packageElement.getLink(pkg)}
-        class={tw`text-blue-600 text-underline`}
+        class="text-blue-600 text-underline"
       >
         link
       </a>
-      <code class={tw`text-sm bg-gray-300 block w-full overflow-y-auto`}>
+      <code class="text-sm bg-gray-300 block w-full overflow-y-auto">
         <pre>
           {stringify({ packages: [pkg] })}
         </pre>
