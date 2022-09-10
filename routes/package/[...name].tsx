@@ -14,8 +14,7 @@ export const handler: Handlers = {
     const pkg =
       packages.filter((i) => packageElement.getName(i) === ctx.params.name)[0];
     if (!pkg) {
-      // TODO: wait for ctx.renderNotFound()
-      return new Response(null, { status: 404 });
+      return ctx.renderNotFound();
     }
     // TODO: if aliases are found, redirect to oroginal package
     const resp = await ctx.render({ pkg });

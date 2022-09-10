@@ -1,7 +1,8 @@
+import { ComponentChildren } from "preact";
 import { Head } from "$fresh/runtime.ts";
 
-export interface AppProps {
-  children: h.JSX.Element[];
+export interface PageProps {
+  children: ComponentChildren;
   title: string;
 }
 
@@ -20,7 +21,7 @@ const LINKS = [
   },
 ];
 
-export function Page(props: AppProps) {
+export function Page(props: PageProps) {
   return (
     <div class="min-h-screen">
       <Head>
