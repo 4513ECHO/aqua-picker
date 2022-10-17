@@ -5,5 +5,5 @@ registries:
 - type: standard
   ref: v3.35.0 # renovate: depName=aquaproj/aqua-registry
 packages:
-- name: denoland/deno@v1.25.1
-- name: LukeChannings/deno-arm64@v1.25.1
+- name: denoland/deno@v1.26.1
+- name: LukeChannings/deno-arm64@v1.26.1
