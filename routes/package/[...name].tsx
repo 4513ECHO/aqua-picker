@@ -45,8 +45,8 @@ export default function Package(props: PageProps<Data>) {
       <table class="table-fixed border">
         <thead>
           <tr>
-            <th class="p-2">Supported Envs</th>
-            <th class="p-2">Checksum</th>
+            <th class="border p-2">Supported Envs</th>
+            <th class="border p-2">Checksum</th>
           </tr>
         </thead>
         <tbody>
@@ -55,7 +55,7 @@ export default function Package(props: PageProps<Data>) {
               {pkg.supported_envs?.join(", ") ?? "all"}
             </td>
             <td class="border p-2">
-              {pkg.checksum?.enabled ? "supported" : "unsupported"}
+              {pkg.checksum ? "supported" : "unsupported"}
             </td>
           </tr>
         </tbody>
