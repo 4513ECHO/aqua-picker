@@ -4,8 +4,7 @@ import * as path from "$std/path/mod.ts";
 export function hasRepo(
   pkg: PackageElement,
 ): pkg is PackageElement & { repo_owner: string; repo_name: string } {
-  return pkg.repo_owner !== undefined && pkg.repo_name !== undefined &&
-    pkg.repo_owner !== "" && pkg.repo_name !== "";
+  return !!pkg.repo_owner && !!pkg.repo_name;
 }
 
 export function getName(pkg: PackageElement): string {

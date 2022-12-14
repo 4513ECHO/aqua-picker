@@ -36,11 +36,7 @@ export default function Search() {
 
   const handleInputChange = (input: string): void => {
     setInput(input);
-    if (input === "") {
-      setEntries([]);
-      return;
-    }
-    setEntries(fzf.find(input));
+    setEntries(input === "" ? [] : fzf.find(input));
   };
 
   return (

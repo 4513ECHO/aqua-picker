@@ -12,18 +12,15 @@ function formatTime(start: number): string {
   return delta < 100 ? `${delta}ms` : `${Math.round(delta / 1000)}s`;
 }
 
-function statusColor(status: number): string {
-  const out: Record<string, string> = {
-    7: "#ff00ff",
-    5: "#ff0000",
-    4: "#ffff00",
-    3: "#00ffff",
-    2: "#00ff00",
-    1: "#00ff00",
-    0: "#ffff00",
-  };
-  return out[(status / 100) | 0];
-}
+const color: Record<string, string> = {
+  7: "#800080",
+  5: "#800000",
+  4: "#808000",
+  3: "#008080",
+  2: "#008000",
+  1: "#008000",
+  0: "#808000",
+};
 
 function log(
   func: (...data: unknown[]) => void,
@@ -39,8 +36,8 @@ function log(
   func(
     out,
     "color: #808080",
-    "font: bold",
-    `color: ${statusColor(status)}`,
+    "",
+    `color: ${color[(status / 100) | 0]}`,
     "",
   );
 }
@@ -49,7 +46,6 @@ async function logger(
   req: Request,
   ctx: MiddlewareHandlerContext,
 ): Promise<Response> {
-  // logging (method path+params timeTaken status)
   const { search, pathname } = new URL(req.url);
   const [method, path] = [req.method, pathname + search];
   const func = pathname.startsWith("/_frsh/") ? console.debug : console.log;
