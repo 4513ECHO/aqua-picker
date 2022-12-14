@@ -10,8 +10,20 @@ export default function Home() {
         alt="the fresh logo: a sliced lemon dripping with juice"
       />
       <p class="my-6">
-        Welcome to `fresh`. Try updating this message in the ./routes/index.tsx
-        file, and refresh.
+        Interactive searching from web for{" "}
+        <a
+          href="https://aquaproj.github.io"
+          class="text-blue-500 hover:underline"
+        >
+          aquaproj/aqua
+        </a>{" "}
+        which is declarative version manager for CLI.
+      </p>
+      <h2 class="font-bold text-lg">What is aqua?</h2>
+      <p class="my-6">
+        Declarative CLI Version manager written in Go. Support Lazy Install,
+        Registry, and continuous update with Renovate. CLI version is switched
+        seamlessly
       </p>
       <Search />
     </Page>

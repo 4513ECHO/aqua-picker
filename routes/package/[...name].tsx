@@ -28,19 +28,44 @@ export default function Package(props: PageProps<Data>) {
   const name = packageElement.getName(pkg);
   return (
     <Page title={`${name} | Aqua Picker`}>
-      <h1 class="font-bold text-xl">
-        <a href={`/package/${name}`} class="hover:text-underline">{name}</a>
-      </h1>
+      <div class="flex my-auto">
+        <h1 class="font-bold text-xl">
+          <a href={`/package/${name}`} class="hover:underline">{name}</a>
+        </h1>
+        <a
+          href={packageElement.getLink(pkg)}
+          class="px-3 py-1 mx-3 text(sm white) bg-gray-800 border-1 rounded-lg hover:(text-gray-800 bg-white border(1 gray-800))"
+        >
+          View link
+        </a>
+      </div>
       {pkg.description
         ? <p class="my-6">{pkg.description}</p>
-        : <p class="text-gray-400 my-6">no description found</p>}
-      <a
-        href={packageElement.getLink(pkg)}
-        class="text-blue-600 text-underline"
-      >
-        link
-      </a>
-      <code class="text-sm bg-gray-300 block w-full overflow-y-auto">
+        : <p class="my-6 text-gray-400">no description found</p>}
+      <table class="table-fixed border">
+        <thead>
+          <tr>
+            <th class="p-2">Supported Envs</th>
+            <th class="p-2">Checksum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center">
+            <td class="border p-2">
+              {pkg.supported_envs?.join(", ") ?? "all"}
+            </td>
+            <td class="border p-2">
+              {pkg.checksum?.enabled ? "supported" : "unsupported"}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 class="my-4 font-bold text-lg">Installation</h2>
+      <code class="p-2 text-sm text-white bg-gray-800 block w-full overflow-y-auto">
+        <pre>$ aqua g -i {name}</pre>
+      </code>
+      <h2 class="my-4 font-bold text-lg">registry.yaml</h2>
+      <code class="p-2 text-sm text-white bg-gray-800 block w-full overflow-y-auto">
         <pre>
           {stringify({ packages: [pkg] })}
         </pre>
