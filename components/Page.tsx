@@ -28,9 +28,7 @@ export function Page(props: PageProps) {
         <title>{props.title}</title>
         <meta property="og:title" content={props.title} />
       </Head>
-      <header
-        class="bg-gray-100 h-16 flex flex-col text-gray-600"
-      >
+      <header class="bg-gray-100 h-16 flex text-gray-600">
         <a href="/" class="p-3 flex">
           <img
             src="https://raw.githubusercontent.com/aquaproj/aqua/main/logo/aqua_without_text.svg"
@@ -41,11 +39,12 @@ export function Page(props: PageProps) {
             Aqua Picker
           </span>
         </a>
+        <a href="/random" class="my-auto ml-auto mr-4">
+          <span class="text-lg hover:underline">Random</span>
+        </a>
       </header>
       <main class="p-4 max-w-screen-md mx-auto">{props.children}</main>
-      <footer
-        class="bg-gray-100 h-40 flex flex-col gap-4 justify-center items-center text(gray-600 center) sticky top-[100vh]"
-      >
+      <footer class="bg-gray-100 h-40 flex flex-col gap-4 justify-center items-center text(gray-600 center) sticky top-[100vh]">
         <nav>
           <ul class="flex justify-center gap-8">
             {LINKS.map((link) => (
@@ -61,7 +60,6 @@ export function Page(props: PageProps) {
         <p class="h-4">
           <a href="https://fresh.deno.dev">
             <img
-              class="hover:(border(1 transparent)"
               width="197"
               height="37"
               src="https://fresh.deno.dev/fresh-badge.svg"

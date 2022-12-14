@@ -56,7 +56,7 @@ export default function Search() {
       <div class="pt-2">
         <ul>
           {entries.slice(0, 50).map((entry, index) => (
-            <li key={index} class="py-1 hover:underline">
+            <li key={index} class="py-1 hover:(underline text-blue-500)">
               <a href={`/package/${packageElement.getName(entry.item)}`}>
                 <HighlightMatches
                   str={selector(entry.item)}
