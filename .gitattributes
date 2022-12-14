@@ -1,0 +1,3 @@
+/deno.lock linguist-language=JSON linguist-generated
+/fresh.gen.ts linguist-generated
+/types/aqua.d.ts linguist-vendored
