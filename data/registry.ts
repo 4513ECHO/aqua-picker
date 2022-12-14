@@ -1,5 +1,5 @@
 import { parse } from "$std/encoding/yaml.ts";
-import { ensureLike } from "https://deno.land/x/unknownutil@v2.0.0/mod.ts";
+import { ensureLike } from "https://deno.land/x/unknownutil@v2.1.0/mod.ts";
 import type { Registry } from "@/types/aqua.d.ts";
 
 const response = await fetch(
