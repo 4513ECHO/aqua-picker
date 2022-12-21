@@ -22,7 +22,7 @@ export interface PackageElement {
     search_words?:         string[];
     supported_envs?:       SupportedEnvElement[];
     supported_if?:         string;
-    type:                  PackageType;
+    type:                  Type;
     url?:                  string;
     version_constraint?:   string;
     version_filter?:       string;
@@ -81,15 +81,16 @@ export interface OverrideElement {
     goarch?:               Goarch;
     goos?:                 Goos;
     replacements?:         Replacements;
+    type?:                 Type;
     url?:                  string;
     windows_ext?:          string;
 }
 
 export type Goarch = "386" | "amd64" | "arm" | "arm64" | "mips" | "mips64" | "mips64le" | "mipsle" | "ppc64" | "ppc64le" | "riscv64" | "s390x";
 
-export type SupportedEnvElement = "all" | "darwin" | "linux" | "windows" | "amd64" | "arm64" | "darwin/amd64" | "darwin/arm64" | "linux/amd64" | "linux/arm64" | "windows/amd64" | "windows/arm64";
+export type Type = "github_release" | "github_content" | "github_archive" | "http" | "go" | "go_install";
 
-export type PackageType = "github_release" | "github_content" | "github_archive" | "http" | "go" | "go_install";
+export type SupportedEnvElement = "all" | "darwin" | "linux" | "windows" | "amd64" | "arm64" | "darwin/amd64" | "darwin/arm64" | "linux/amd64" | "linux/arm64" | "windows/amd64" | "windows/arm64";
 
 export interface VersionOverrideElement {
     asset?:                string;
@@ -106,14 +107,12 @@ export interface VersionOverrideElement {
     rosetta2?:             boolean;
     supported_envs?:       SupportedEnvElement[];
     supported_if?:         string;
-    type?:                 VersionOverrideType;
+    type?:                 Type;
     url?:                  string;
     version_constraint?:   string;
     version_filter?:       string;
     version_source?:       string;
     windows_ext?:          string;
 }
-
-export type VersionOverrideType = "github_release" | "github_content" | "github_archive" | "http";
 
 export type VersionSource = "github_tag";

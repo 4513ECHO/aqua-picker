@@ -10,6 +10,6 @@
     "twind": "https://esm.sh/twind@0.16.17",
     "twind/": "https://esm.sh/twind@0.16.17/",
     "fzf": "https://esm.sh/fzf@0.5.1",
-    "$std/": "https://deno.land/std@0.167.0/"
+    "$std/": "https://deno.land/std@0.170.0/"
   }
 }
