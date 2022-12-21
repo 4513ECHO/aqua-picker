@@ -5,7 +5,7 @@ import { packages } from "@/data/registry.ts";
 
 export const handler: Handlers = {
   GET(req: Request): Response {
-    const pkg = sample(packages.map(packageElement.getName)) ?? "";
+    const pkg = sample(packages.map(packageElement.getName))!;
     return Response.redirect(
       new URL(`/package/${pkg}`, new URL(req.url).origin),
       302,

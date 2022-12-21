@@ -28,7 +28,7 @@ function parseEnv(
         const archAndOS = env.split("/")
           .map((i) => parseEnv(i))
           .filter(<T>(i: T | null): i is T => i !== null);
-        return archAndOS.reduce(Object.assign, {});
+        return { ...archAndOS[0], ...archAndOS[1] };
       } else {
         // ignore unknown arch/os
         return null;
