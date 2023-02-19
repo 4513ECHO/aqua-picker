@@ -14,7 +14,7 @@
   "importMap": "./import_map.json",
   "lock": false,
   "tasks": {
-    "generate-type": "deno run -A npm:quicktype@15.1.0 -l typescript -s schema https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json --just-types --prefer-unions > types/aqua.ts",
+    "generate-type": "deno run -A npm:quicktype@15.1.0 -l typescript -s schema https://cdn.jsdelivr.net/gh/aquaproj/aqua/json-schema/registry.json --just-types --prefer-unions > types/aqua.ts",
     "start": "deno run -A --watch=static/,routes/ dev.ts"
   }
 }

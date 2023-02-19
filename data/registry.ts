@@ -3,7 +3,7 @@ import { ensureLike } from "https://deno.land/x/unknownutil@v2.1.0/mod.ts";
 import type { Registry } from "@/types/aqua.ts";
 
 const response = await fetch(
-  "https://raw.githubusercontent.com/aquaproj/aqua-registry/main/registry.yaml",
+  "https://cdn.jsdelivr.net/gh/aquaproj/aqua-registry/registry.yaml",
 );
 
 const registry = response.ok
