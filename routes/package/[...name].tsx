@@ -13,12 +13,16 @@ interface Data {
 
 export const handler: Handlers = {
   async GET(_req: Request, ctx: HandlerContext<Data>) {
-    const pkg =
-      packages.filter((i) => packageElement.getName(i) === ctx.params.name)[0];
+    const pkg = packages.filter((p) => {
+      const name = packageElement.getName(p);
+      return name === ctx.params.name ||
+        (p.aliases
+            ?.filter((alias) => alias.name === ctx.params.name)
+            ?.length ?? 0) > 0;
+    })[0];
     if (!pkg) {
       return ctx.renderNotFound();
     }
-    // TODO: if aliases are found, redirect to oroginal package
     const resp = await ctx.render({ pkg });
     resp.headers.set("X-Custom-Header", "Hello World");
     return resp;
@@ -41,6 +45,8 @@ export default function Package(props: PageProps<Data>) {
           View link
         </a>
       </div>
+      {name !== props.params.name &&
+        <p class="my-4 text-gray-400">redirected from {props.params.name}</p>}
       {pkg.description
         ? <p class="my-6">{pkg.description}</p>
         : <p class="my-6 text-gray-400">no description found</p>}
