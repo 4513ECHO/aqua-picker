@@ -1,4 +1,4 @@
-import { FileElement, PackageElement } from "@/types/aqua.d.ts";
+import { FileElement, PackageElement } from "@/types/aqua.ts";
 import * as path from "$std/path/mod.ts";
 
 export function hasRepo(

@@ -2,7 +2,7 @@ import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { HighlightMatches } from "@/components/HighlightMatches.tsx";
 import { extendedMatch, Fzf, FzfResultItem } from "fzf";
-import type { PackageElement } from "@/types/aqua.d.ts";
+import type { PackageElement } from "@/types/aqua.ts";
 import * as packageElement from "@/utils/package_element.ts";
 import { packages } from "@/data/registry.ts";
 

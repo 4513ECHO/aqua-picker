@@ -20,7 +20,7 @@ $ deno task start
 
 This will watch the project directory and restart as necessary.
 
-Update aqua [typing definition](./types/aqua.d.ts):
+Update aqua [typing definition](./types/aqua.ts):
 
 ```console
 $ deno task generate-type

@@ -1,6 +1,6 @@
 import type { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { stringify } from "$std/encoding/yaml.ts";
-import type { PackageElement } from "@/types/aqua.d.ts";
+import type { PackageElement } from "@/types/aqua.ts";
 import * as packageElement from "@/utils/package_element.ts";
 import { toMatrix } from "@/utils/supported_envs.ts";
 import { packages } from "@/data/registry.ts";
