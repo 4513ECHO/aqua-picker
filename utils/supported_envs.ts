@@ -9,46 +9,33 @@ export enum OS {
   Windows = 2,
 }
 
-function parseEnv(
-  env: string,
-): { arch?: Arch; os?: OS } | null {
-  switch (env) {
-    case "amd64":
-      return { arch: Arch.Amd64 };
-    case "arm64":
-      return { arch: Arch.Arm64 };
-    case "darwin":
-      return { os: OS.Darwin };
-    case "linux":
-      return { os: OS.Linux };
-    case "windows":
-      return { os: OS.Windows };
-    default:
-      if (env.includes("/")) {
-        const archAndOS = env.split("/")
-          .map((i) => parseEnv(i))
-          .filter(<T>(i: T | null): i is T => i !== null);
-        return { ...archAndOS[0], ...archAndOS[1] };
-      } else {
-        // ignore unknown arch/os
-        return null;
-      }
+export interface Environment {
+  arch?: Arch;
+  os?: OS;
+}
+
+const converter: Record<string, Environment> = {
+  amd64: { arch: Arch.Amd64 },
+  arm64: { arch: Arch.Arm64 },
+  darwin: { os: OS.Darwin },
+  linux: { os: OS.Linux },
+  windows: { os: OS.Windows },
+};
+
+function parseEnv(env: string): Environment {
+  if (env.includes("/")) {
+    return env.split("/").map(parseEnv).reduce(Object.assign, {});
   }
+  return converter[env] ?? {};
 }
 
 export function toMatrix(envs?: string[]): boolean[][] {
   if (!envs) {
-    return [
-      [true, true, true],
-      [true, true, true],
-    ];
+    return [Array(3).fill(true), Array(3).fill(true)];
   }
-  let matrix = [
-    [false, false, false],
-    [false, false, false],
-  ];
+  let matrix = [Array(3).fill(false), Array(3).fill(false)];
   for (const env of envs) {
-    const { arch, os } = parseEnv(env) ?? {};
+    const { arch, os } = parseEnv(env);
     matrix = matrix.map((arr, row) =>
       arr.map((value, col) =>
         value ||
